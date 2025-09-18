@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ocean Notes – Playful Personal Notes Organizer
 
-## Getting Started
+A Next.js frontend that lets users create, edit, and manage personal notes with a playful "Ocean Professional" theme, featuring vibrant colors, rounded surfaces, and lively gradients.
 
-First, run the development server:
+## Tech
+- Next.js App Router
+- Tailwind CSS v4
+- TypeScript
+- LocalStorage mock API (ready to be swapped for real backend)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Run
+- Development: `npm run dev`
+- Build: `npm run build`
+- Start: `npm start`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure
+- src/app: pages and layout
+- src/components: UI components (Header, Sidebar, NoteCard, NoteModal, ConfirmDialog)
+- src/hooks/useNotes.ts: state management and CRUD orchestration
+- src/services/notesApi.ts: mock API (localStorage)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Theme
+Colors and radii are set in src/styles/theme.ts and src/app/globals.css using Tailwind v4 and CSS variables.
 
-## Learn More
+Primary: #EC4899
+Secondary: #8B5CF6
+Background: #FDF2F8
+Surface: #FFFFFF
+Text: #374151
 
-To learn more about Next.js, take a look at the following resources:
+## Backend integration (future)
+Swap src/services/notesApi.ts functions to call your backend:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Set env: NEXT_PUBLIC_NOTES_API_URL=https://your-backend.example.com
+- Replace the functions with fetch(`${process.env.NEXT_PUBLIC_NOTES_API_URL}/notes`...)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Accessibility
+- Descriptive aria labels
+- Keyboard focusable controls
+- Color contrast conscious styling
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes
+- Data persists locally in the browser via localStorage in the mock API.
+- Tags are comma-separated in the editor and used for filtering.

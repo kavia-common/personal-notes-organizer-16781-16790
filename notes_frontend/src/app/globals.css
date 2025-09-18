@@ -1,26 +1,122 @@
 @import "tailwindcss";
 
-:root {
-  --color-primary: #000000;
-  --color-secondary: #FFFFFF;
-  --color-accent: #3B82F6;
-  --color-background: #FFFFFF;
+@theme {
+  --color-primary: #EC4899;
+  --color-secondary: #8B5CF6;
+  --color-success: #10B981;
+  --color-error: #EF4444;
+  --color-background: #FDF2F8;
+  --color-surface: #FFFFFF;
+  --color-text: #374151;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  --shadow-soft: 0 8px 24px rgba(139, 92, 246, 0.15);
+  --shadow-hover: 0 12px 30px rgba(236, 72, 153, 0.25);
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
-html,
-body {
+html, body {
   max-width: 100vw;
   overflow-x: hidden;
-  background-color: var(--color-background);
-  color: var(--color-primary);
+  background: var(--color-background);
+  color: var(--color-text);
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+/* Playful gradient backdrops */
+.app-bg {
+  background-image: linear-gradient(135deg, #ffe4f3 0%, #f1e8ff 35%, #e1f0ff 100%);
+}
+
+/* Glassy surfaces */
+.surface {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Buttons */
+.btn {
+  @apply inline-flex items-center justify-center font-medium transition-transform duration-150 active:scale-[0.98];
+  border-radius: 12px;
+  padding: 0.625rem 0.9rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+  box-shadow: var(--shadow-soft);
+}
+.btn-primary:hover { box-shadow: var(--shadow-hover); }
+
+.btn-secondary {
+  background: rgba(139, 92, 246, 0.12);
+  color: #6D28D9;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text);
+}
+
+/* Inputs */
+.input {
+  @apply w-full outline-none;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  padding: 0.625rem 0.9rem;
+  transition: box-shadow .15s ease, border-color .15s ease;
+}
+.input:focus {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
+}
+
+/* Textarea */
+.textarea {
+  @apply w-full outline-none;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  padding: 0.75rem 0.9rem;
+  min-height: 120px;
+  transition: box-shadow .15s ease, border-color .15s ease;
+  resize: vertical;
+}
+.textarea:focus {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
+}
+
+/* Modal */
+.modal-overlay {
+  @apply fixed inset-0 flex items-center justify-center z-50;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+}
+
+.modal {
+  @apply w-full max-w-xl;
+  background: var(--color-surface);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  padding: 1rem;
+}
+
+/* Scrollbar subtle flair */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+  border-radius: 999px;
 }
